@@ -16,3 +16,14 @@ aws lambda list-functions                                  --> this command list
 # list IAM users
 echo "print the no iam users"
 aws iam list-users                                          --> this command lists all the iam users
+
+
+Steps for running this file
+1. creating file - vi resource-tracker-aws.sh
+2. write the above script in the file and save it
+3. grant the permission to the file - chmod 777 resource-tracker-aws.sh       --> grant the permissions accordingly, here I have granted full access to the script
+4. run the script - ./resource-tracker-aws.sh | more             --> more works as a pager utility that displays text one screenful at a time.
+
+NOTE: If you do not have 'jq' installed run the following commands:
+1. sudo apt-get update
+2. sudo apt-get install jq
