@@ -1,0 +1,18 @@
+#!/bin/bash                                      --> this is the shebang line which tells the interpreter that it is a script.
+
+set -x                                           --> this command is a valuable debugging tool. It is used to display each command and its expanded form before execution in the output.
+# list ec2 instances
+echo "print the no of instances"
+aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId'     --> It is used to list all the ec2 instances whether running, stopped or terminated, regardless of their state.However, it's important to note that terminated instances are only included in the results for a short period after termination, typically less than an hour. ​After this brief interval, terminated instances are permanently removed from the system and no longer appear in the output of describe-instances. This behavior ensures that your instance listings remain current and uncluttered by instances that are no longer active.
+
+# list s3 buckets
+echo "print the no of s3 buckets"
+aws s3 ls                                                  --> this command lists all the s3 buckets
+
+# list lambda
+echo "print the no of lambda functions"
+aws lambda list-functions                                  --> this command lists all the lambda functions 
+
+# list IAM users
+echo "print the no iam users"
+aws iam list-users                                          --> this command lists all the iam users
