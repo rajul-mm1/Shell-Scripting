@@ -23,15 +23,17 @@ function github-get-api {
 }
 
 function list-users-with-read-access{
-  local endpoint="repos/${repo_owner}/${repo_user}/collaborators"
-  collaborators="$(github-get-api "$endpoint" | jq -r '.[] | select(.permissions.pull == true) | .login')"
+          local endpoint="repos/${repo_owner}/${repo_user}/collaborators"
+          
+          collaborators="$(github-get-api "$endpoint" | jq -r '.[] | select(.permissions.pull == true) | .login')"
 
-if [[-z "$collaborators"]]; then
-  echo "No users with read access are found for ${repo_owner}/${repo_name}."
-else
-  echo "Users found with read access to ${repo_owner}/${repo_name}."
-  echo "$collaborators"
-fi
+          if [[-z "$collaborators"]]; then
+                    echo "No users with read access are found for ${repo_owner}/${repo_name}."
+          else
+                      echo "Users found with read access to ${repo_owner}/${repo_name}."
+                      echo "$collaborators"
+          fi
+}
 
 echo "Listing users with read access ${repo_owner}/${repo_name}"
 list-users-with-read-access
